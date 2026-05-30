@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pitoresco Pastel</title>
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(180deg, #ffc12b 0%, #ffd968 36%, #fff6e8 36%, #fff6e8 100%);
+      display: flex;
+      justify-content: center;
+      color: #4a1a0f;
+    }
+
+    .page {
+      width: 100%;
+      max-width: 456px;
+      min-height: 100vh;
+      position: relative;
+      overflow: hidden;
+      padding-bottom: 32px;
+    }
+
+    .top {
+      height: 270px;
+      position: relative;
+      background:
+        radial-gradient(circle at 12% 20%, rgba(255,255,255,.28) 0 3px, transparent 4px),
+        radial-gradient(circle at 82% 15%, rgba(255,255,255,.22) 0 4px, transparent 5px),
+        radial-gradient(circle at 75% 70%, rgba(255,255,255,.18) 0 5px, transparent 6px),
+        linear-gradient(135deg, #ffb20f, #ffd55a);
+    }
+
+    .top::before {
+      content: "";
+      position: absolute;
+      width: 180px;
+      height: 180px;
+      left: -65px;
+      top: 28px;
+      background: rgba(255, 255, 255, 0.16);
+      border-radius: 45px;
+      transform: rotate(18deg);
+      filter: blur(1px);
+    }
+
+    .top::after {
+      content: "";
+      position: absolute;
+      width: 120px;
+      height: 120px;
+      right: -40px;
+      top: 55px;
+      background: rgba(193, 25, 31, 0.14);
+      border-radius: 50%;
+      filter: blur(1px);
+    }
+
+    .wave {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 78px;
+      background: #fff6e8;
+      border-top-left-radius: 55% 70%;
+      border-top-right-radius: 55% 70%;
+      border-top: 8px solid #c8191f;
+    }
+
+    .logo-wrapper {
+      width: 190px;
+      height: 190px;
+      position: absolute;
+      left: 50%;
+      top: 70px;
+      transform: translateX(-50%);
+      z-index: 2;
+      border-radius: 50%;
+      padding: 8px;
+      background: #fff9ec;
+      box-shadow: 0 14px 35px rgba(80, 35, 0, 0.22);
+    }
+
+    .logo-wrapper img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: contain;
+      background: #fff;
+    }
+
+    main {
+      position: relative;
+      z-index: 3;
+      margin-top: -6px;
+      padding: 0 28px;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 1.05;
+      color: #aa1419;
+      font-weight: 900;
+      letter-spacing: -1px;
+      margin-top: 28px;
+      text-shadow: 0 2px 0 rgba(255,255,255,.8);
+    }
+
+    .divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin: 18px 0 16px;
+    }
+
+    .divider span {
+      width: 42px;
+      height: 3px;
+      background: #ffc12b;
+      border-radius: 999px;
+    }
+
+    .divider .pastel-icon {
+      width: 22px;
+      height: 22px;
+      background: #ffc12b;
+      border-radius: 5px;
+      transform: rotate(45deg);
+      box-shadow: inset 0 0 0 3px rgba(255,255,255,.35);
+    }
+
+    .subtitle {
+      font-size: 22px;
+      line-height: 1.35;
+      color: #6b5b4a;
+      max-width: 330px;
+      margin: 0 auto 34px;
+      font-weight: 500;
+    }
+
+    .links {
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+    }
+
+    .link-button {
+      width: 100%;
+      min-height: 82px;
+      border: none;
+      border-radius: 999px;
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 12px 22px 12px 16px;
+      text-decoration: none;
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+      box-shadow: 0 12px 22px rgba(65, 34, 0, 0.20);
+      transition: transform .2s ease, box-shadow .2s ease, filter .2s ease;
+    }
+
+    .link-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 28px rgba(65, 34, 0, 0.25);
+      filter: brightness(1.03);
+    }
+
+    .link-button:active {
+      transform: scale(.98);
+    }
+
+    .icon {
+      min-width: 58px;
+      width: 58px;
+      height: 58px;
+      border-radius: 50%;
+      background: #fff8ed;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 29px;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,.04);
+      overflow: hidden;
+    }
+
+    .icon img {
+      width: 38px;
+      height: 38px;
+      object-fit: contain;
+      display: block;
+    }
+
+    .button-text {
+      flex: 1;
+      text-align: left;
+      white-space: nowrap;
+    }
+
+    .arrow {
+      font-size: 34px;
+      line-height: 1;
+      opacity: .92;
+    }
+
+    .delivery {
+      background: linear-gradient(135deg, #d51d24, #b70f16);
+      color: #fff;
+    }
+
+    .delivery .icon {
+      color: #c8191f;
+    }
+
+    .pickup {
+      background: linear-gradient(135deg, #ffc83d, #ffb01e);
+      color: #3f1806;
+    }
+
+    .whatsapp {
+      background: linear-gradient(135deg, #15803d, #075f2e);
+      color: #fff;
+    }
+
+    footer {
+      margin-top: 42px;
+      text-align: center;
+      color: #5b2114;
+      font-weight: 700;
+      font-size: 18px;
+    }
+
+    .heart {
+      color: #c8191f;
+      font-size: 22px;
+      display: block;
+      margin-bottom: 10px;
+    }
+
+    .footer-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+    }
+
+    .spark {
+      color: #f5a600;
+      font-size: 24px;
+    }
+
+    .floating-pastel {
+      position: absolute;
+      width: 86px;
+      height: 60px;
+      background: #f6b94b;
+      border-radius: 14px;
+      opacity: .16;
+      transform: rotate(18deg);
+      right: -18px;
+      bottom: 22px;
+    }
+
+    .floating-pastel::before {
+      content: "";
+      position: absolute;
+      inset: 9px;
+      border: 2px dashed rgba(126, 72, 0, .28);
+      border-radius: 10px;
+    }
+
+    @media (max-width: 380px) {
+      .logo-wrapper {
+        width: 165px;
+        height: 165px;
+        top: 82px;
+      }
+
+      h1 {
+        font-size: 34px;
+      }
+
+      .subtitle {
+        font-size: 19px;
+      }
+
+      .link-button {
+        min-height: 74px;
+        font-size: 20px;
+      }
+
+      .icon {
+        width: 52px;
+        height: 52px;
+        min-width: 52px;
+        font-size: 25px;
+      }
+
+      .icon img {
+        width: 34px;
+        height: 34px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="page">
+    <section class="top">
+      <div class="logo-wrapper">
+        <img
+          src="https://files.menudino.com/merchants/6594a097-5b87-11f1-85b5-6045bd38ebc1/logo.png?v=1780159747139"
+          alt="Logo Pitoresco Pastel"
+        />
+      </div>
+
+      <div class="wave"></div>
+    </section>
+
+    <main>
+      <h1>Pitoresco Pastel</h1>
+
+      <div class="divider">
+        <span></span>
+        <div class="pastel-icon"></div>
+        <span></span>
+      </div>
+
+      <p class="subtitle">
+        Pastéis deliciosos para delivery e retirada.
+      </p>
+
+      <section class="links">
+        <a
+          class="link-button delivery"
+          href="https://oia.99app.com/dlp9/ziudId"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="icon">🛵</div>
+          <div class="button-text">Delivery • 99 Food</div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a
+          class="link-button pickup"
+          href="https://pitorescopastel.menudino.com/"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="icon">🛍️</div>
+          <div class="button-text">Retirada • MenuDino</div>
+          <div class="arrow">›</div>
+        </a>
+
+        <a
+          class="link-button whatsapp"
+          href="https://wa.me/5581985325395"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <div class="icon">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/5e/WhatsApp_icon.png/500px-WhatsApp_icon.png"
+              alt="WhatsApp"
+            />
+          </div>
+
+          <div class="button-text">WhatsApp</div>
+          <div class="arrow">›</div>
+        </a>
+      </section>
+
+      <footer>
+        <span class="heart">♥</span>
+
+        <div class="footer-text">
+          <span class="spark">⌁</span>
+          <span>Feito com carinho para você!</span>
+          <span class="spark">⌁</span>
+        </div>
+      </footer>
+    </main>
+
+    <div class="floating-pastel"></div>
+  </div>
+</body>
+</html>
